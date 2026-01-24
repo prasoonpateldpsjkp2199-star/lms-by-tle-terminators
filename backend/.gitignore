@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 /node_modules
 .env
+=======
+node_modules
+>>>>>>> 981b983 (Add Shared Configurations & Utilities)

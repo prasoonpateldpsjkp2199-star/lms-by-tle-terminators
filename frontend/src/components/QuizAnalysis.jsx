@@ -5,7 +5,8 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 
-function QuizAnalysis({ loading, data }) {
+function QuizAnalysis({loading, data}) {
+
   if (loading) return <div className="p-10 text-center">Loading Stats...</div>;
 
   return (
@@ -36,6 +37,8 @@ function QuizAnalysis({ loading, data }) {
                 <th className="p-4 font-semibold text-center">Highest Score</th>
               </tr>
             </thead>
+
+            
 
             <tbody className="divide-y divide-gray-100">
               {data.map((item) => (
@@ -99,10 +102,13 @@ function QuizAnalysis({ loading, data }) {
               )}
             </tbody>
           </table>
+          
         </div>
       </div>
     </div>
   );
 }
 
+
 export default QuizAnalysis;
+

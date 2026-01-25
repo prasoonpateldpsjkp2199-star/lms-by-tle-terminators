@@ -1,11 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { FaClock } from "react-icons/fa";
 
+/* ---------------- QuizTimer Component ----------------
+   Props:
+     - durationMinutes (number)
+     - onExpire () => callback when time ends
+   Behavior:
+     - counts down in seconds
+     - shows mm:ss and a progress bar
+     - auto-calls onExpire when reaches 0
+*/
 function QuizTimer({ durationMinutes = 0, onExpire = () => {} }) {
   const totalSeconds = Math.max(0, Math.floor(durationMinutes * 60));
   const [secondsLeft, setSecondsLeft] = useState(totalSeconds);
   const intervalRef = useRef(null);
 
+  // Start countdown on mount (if duration > 0)
   useEffect(() => {
     setSecondsLeft(totalSeconds);
     if (intervalRef.current) {
@@ -32,6 +42,7 @@ function QuizTimer({ durationMinutes = 0, onExpire = () => {} }) {
         intervalRef.current = null;
       }
     };
+    // we want to restart if durationMinutes changes
   }, [totalSeconds, onExpire]);
 
   // format mm:ss
@@ -59,4 +70,4 @@ function QuizTimer({ durationMinutes = 0, onExpire = () => {} }) {
   );
 }
 
-export default QuizTimer;
+export default QuizTimer

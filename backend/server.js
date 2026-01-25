@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectDb from "./configs/db.js";
+import paymentRouter from "./routes/paymentRoute.js";
+import authRouter from './routes/authRoute.js'
 
 dotenv.config();
 
@@ -18,6 +20,7 @@ app.use(
   }),
 );
 app.use("/api/auth", authRouter);
+app.use("/api/payment", paymentRouter);
 
 app.listen(port, async () => {
   await connectDb();
